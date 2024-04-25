@@ -17,10 +17,10 @@ public class NameChecker {
     public static boolean check(String input) {
         Pattern regex = Pattern.compile("^[a-zA-Z][a-zA-Z-']{1,39}$");
         Matcher stringInput = regex.matcher(input);
-        if (stringInput.find()) {
-            String quotedPattern = "\".*\"";
+        if (stringInput.matches()) {
+            String quotedPattern = "''";
             String dashedPattern = "--";
-            if (input.matches(quotedPattern) || input.matches(dashedPattern)) {
+            if (input.contains(quotedPattern) || input.contains(dashedPattern)) {
                 return false;
             } else {
                 return true;
