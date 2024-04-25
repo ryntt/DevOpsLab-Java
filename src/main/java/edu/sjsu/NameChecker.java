@@ -15,18 +15,12 @@ public class NameChecker {
      * @return True if input is a valid name, else false
      */
     public static boolean check(String input) {
-        Pattern regex = Pattern.compile("^[a-zA-Z][a-zA-Z-']{1,39}$");
-        Matcher stringInput = regex.matcher(input);
-        if (stringInput.matches()) {
-            String quotedPattern = "''";
-            String dashedPattern = "--";
-            if (input.contains(quotedPattern) || input.contains(dashedPattern)) {
-                return false;
-            } else {
-                return true;
-            }
-        } else {
+        // TODO: implement
+        Pattern regexPat = Pattern.compile("^[a-zA-Z]+([-'][a-zA-Z]+)*$");
+        // Matcher stringInput = regexPat.matcher(input);
+        if (input == null || input.length() < 2 || input.length() > 40) {
             return false;
         }
+        return regexPat.matcher(input).matches();
     }
 }
